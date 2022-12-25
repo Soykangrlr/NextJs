@@ -44,8 +44,7 @@ function ProductCard(props:productCard) {
   return (
    
   <>
-  {uiLike }
-  {props.likes}
+ <Link href={`productDetail/${props.id}`}>
     <div  className="border hover:cursor-pointer max-w-[264px] p-8 rounded-2xl relative">
         <div className="shadow-book p-1">
           <img
@@ -63,8 +62,9 @@ function ProductCard(props:productCard) {
         <div className="text-[#0671e1] text-center font-bold mt-2">
           <p>{props.price}.00 tl</p>
         </div>
-        <div  onClick={()=>{
-     
+        <div  onClick={(e)=>{
+     e.stopPropagation()
+     e.preventDefault()
      
         handleLike()}}
         className={`absolute top-3 right-3 hover:cursor-pointer ${uiLike?"text-red-600":"text-gray-400"}`}
@@ -72,6 +72,7 @@ function ProductCard(props:productCard) {
        <AiFillHeart  />
         </div>
       </div>
+      </Link>
       </>
   )
 }

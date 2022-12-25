@@ -116,7 +116,7 @@ function Register() {
 		<div  style={{display:keyBoard?"block":"none"}} className="z-10 absolute p-6 w-4/5 left-1/2  -translate-x-1/2 bg-gray-300 opacity-80">
 	<div className="grid grid-cols-3 gap-4 text-center">
 	
-<kbd onClick={()=>inputPhone("2")}  className="px-2 py-1.5 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg hover:bg-[#0575e6] hover:text-white hover:cursor-pointer ">1</kbd>
+<kbd onClick={()=>inputPhone("1")}  className="px-2 py-1.5 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg hover:bg-[#0575e6] hover:text-white hover:cursor-pointer ">1</kbd>
 <kbd onClick={()=>inputPhone("2")} className="px-2 py-1.5 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg  hover:bg-[#0575e6] hover:text-white hover:cursor-pointer">2</kbd>
 <kbd onClick={()=>inputPhone("3")} className="px-2 py-1.5 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg  hover:bg-[#0575e6] hover:text-white hover:cursor-pointer">3</kbd>
 <kbd onClick={()=>inputPhone("4")} className="px-2 py-1.5 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg  hover:bg-[#0575e6] hover:text-white hover:cursor-pointer">4</kbd>

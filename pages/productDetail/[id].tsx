@@ -34,7 +34,7 @@ function ProductDetail() {
   
   return (
     <Product_ly>
-      {id}
+     
   {isLoading?<Loading/>: <div className="container flex mx-auto relative  border p-10 gap-x-20 flex-col md:flex-row  my-12 rounded-2xl  overflow-hidden">
         <div className="shadow-book p-1 w-44 md:basis-1/4">
           <img
