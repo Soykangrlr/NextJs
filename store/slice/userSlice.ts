@@ -1,18 +1,17 @@
 import {createSlice,createAsyncThunk} from '@reduxjs/toolkit'
-import { postUser } from '../api'
-interface User{
-    token:string|undefined
-}
+import { baseAxios } from '../api'
+
+
 interface userState{
-    token:User | null,
+    token:string | null,
     isloading:boolean,
 }
 const initialState:userState={
-    token:null,
+    token: typeof window !== "undefined" ?localStorage.getItem("token") ? JSON.parse(localStorage.getItem("token")||""):null:null,
     isloading:false
 }
 export const registerUser=createAsyncThunk("registeUser",async({name,email,password}:{name:string,email:string,password:string})=>{
-    const resp=await postUser.post("/api/v1/user/register",{
+    const resp=await baseAxios.post("/api/v1/user/register",{
         
             "name":name,
             "email":email,
@@ -24,7 +23,7 @@ export const registerUser=createAsyncThunk("registeUser",async({name,email,passw
     return resp.data
 })
 export const loginUser=createAsyncThunk("loginUser",async({email,password}:{email:string,password:string})=>{
-    const resp=await postUser.post("/api/v1/user/login",{ 
+    const resp=await baseAxios.post("/api/v1/user/login",{ 
             "email":email,
             "password":password
     })
@@ -35,7 +34,12 @@ export const loginUser=createAsyncThunk("loginUser",async({email,password}:{emai
 const userSlice=createSlice({
     name:"user",
     initialState,
-    reducers:{},
+    reducers:{
+        logout:(state)=>{
+            state.token=null
+            localStorage.removeItem("token")
+        }
+    },
     extraReducers(builder) {
         builder.addCase(registerUser.pending,(state)=>{
             state.isloading=true
@@ -43,6 +47,9 @@ const userSlice=createSlice({
         builder.addCase(registerUser.fulfilled,(state,actions)=>{
             state.token=actions.payload.token;
             state.isloading=false
+            localStorage.setItem("token",JSON.stringify(actions.payload.token))
+            localStorage.setItem("registered",JSON.stringify(true))
+          
         })
         builder.addCase(loginUser.pending,(state)=>{
             state.isloading=true
@@ -50,9 +57,10 @@ const userSlice=createSlice({
         builder.addCase(loginUser.fulfilled,(state,actions)=>{
             state.token=actions.payload.token;
             state.isloading=false
+            localStorage.setItem("token",JSON.stringify(actions.payload.token))
         })
     },
     
 })
-
+export const {logout}=userSlice.actions
 export default userSlice.reducer

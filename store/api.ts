@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-    export const postUser= axios.create({
+    export const baseAxios= axios.create({
             baseURL: 'https://assignment-api.piton.com.tr',
            
             

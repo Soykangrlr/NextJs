@@ -71,9 +71,7 @@ function Register() {
 		<Formik<Values>
          initialValues={initialValues}
          onSubmit={(values, actions) => {
-           console.log({ values, actions });
-           alert(JSON.stringify(values, null, 2));
-		   console.log(typeof(values.name));
+          
 		   const {name,email,password}=values
            dispatch(registerUser({name,email,password}))
          }}

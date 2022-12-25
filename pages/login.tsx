@@ -48,8 +48,8 @@ function Login() {
 		<Formik<Values>
          initialValues={initialValues}
          onSubmit={(values, actions) => {
-           console.log({ values, actions });
-           alert(JSON.stringify(values, null, 2));
+
+           
 		  
 		   const {email,password}=values
            dispatch(loginUser({email,password}))
