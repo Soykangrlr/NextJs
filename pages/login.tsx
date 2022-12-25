@@ -2,7 +2,7 @@ import LoginRegister_ly from "../components/layouts/loginRegister_ly"
 import {AiOutlineUser, AiOutlineMail,AiFillEye,AiFillEyeInvisible} from "react-icons/ai"
 import {MdOutlinePassword}from "react-icons/md"
 import Input from "../components/ui/input"
-import {  useState } from "react"
+import {  useState,useEffect } from "react"
 
 import { Formik } from 'formik'
 import { loginValidation } from "../validationSchema"
@@ -25,7 +25,14 @@ function Login() {
 	const dispatch=useAppDispatch()
 	const user=useAppSelector(state=>state.userSlice)
 	
-    
+	useEffect(()=>{
+		if(user.token){
+		
+		  router.push("/")
+		
+		}
+		
+	   },[user])
 
 	  const initialValues: Values = {
 	

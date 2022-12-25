@@ -19,7 +19,7 @@ interface Values {
 	phoneNumber:string
   }
 function Register() {
-
+	
 	const [phone,setPhone]=useState("")
 	const [phoneNmber,setPhoneNumber]=useState("")
 	const [keyBoard,setKeyBoard]=useState(false)
@@ -29,7 +29,14 @@ function Register() {
 	const dispatch=useAppDispatch()
 	const user=useAppSelector(state=>state.userSlice)
 	console.log(user.token);
-	
+	useEffect(()=>{
+		if(user.token){
+		
+		  router.push("/")
+		
+		}
+		
+	   },[user])
 	const inputPhone=(id:string)=>{
 	
 		if(phone.length<10){
